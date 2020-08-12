@@ -1,0 +1,21 @@
+<div class="row container">
+    <div class="col-sm-3">
+        <h5 class="vehicle-title">{{item?.time}}</h5>
+    </div>
+    <div class="col-sm-2">
+        <h6 class="vehicle-title">{{item?.brand}} {{item?.model}}, {{item?.yearBuilt}}</h6>
+        <p class="small-text">{{item?.VIN}}</p>
+    </div>
+    <div class="col-sm-2">
+        <p class="price-text">{{availability?.price}}€ + {{availability?.pricePerKilometer}}€/km</p>
+    </div>
+    <div class="col-sm-3 date-div">
+        <p class="date-text">from {{startDateTime}} to {{endDateTime}}</p>
+    </div>
+    <div class="col-sm-1">
+        <button class="delete-button" (click)="delete()"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    <div class="col-sm-1 checkbox-div">
+        <mat-slide-toggle></mat-slide-toggle>
+    </div>
+</div>
