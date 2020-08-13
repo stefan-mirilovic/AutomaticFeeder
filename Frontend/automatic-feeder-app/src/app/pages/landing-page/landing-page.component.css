@@ -61,10 +61,7 @@ body {
         font-size: 220px;
     }
 
-
-
-
-#box-div {
+#content-div {
     background: #7eaacd;
     background: -webkit-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
     background: -moz-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
@@ -82,8 +79,30 @@ body {
     left:0;
     width:100%;
     height: 100%;
-    overflow: hidden; /* Hide scrollbars */
+    overflow-x: hidden; /* Hide scrollbars */
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+}
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(245, 245, 245, 0.7);
+    border-radius: 5px;
+}
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: white;
+  }
 
 .topbar-title-container {
     text-align: center;
@@ -122,6 +141,9 @@ a:link {
 
 .topbar {
     background-color: #212529;
+    /* position: fixed;
+    width: 100%;
+    top: 0; */
 }
 
 .amount-container {
@@ -217,14 +239,16 @@ button:focus {
 
 #schedule-button {
     background-color: #ffc04b;
+    margin-top: 80px;
 }
 
 #info-button {
     background-color: #5683c5;
+    margin-top: 160px;
 }
 
 .menu-button {
-    position: relative;
+    position: fixed;
     color: white;
     border: none;
     margin-left: -120px;

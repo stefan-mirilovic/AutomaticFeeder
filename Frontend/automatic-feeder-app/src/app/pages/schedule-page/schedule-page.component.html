@@ -1,5 +1,16 @@
-<div class="row">
-    <div class="col-12">
-        <schedule-card *ngFor="let f of feedings" [item]="f" [deleteMode]="false"></schedule-card>
+<div class="container">
+    <div class="row">
+        <div class="col-12 status-container">
+            <h3 class="status" *ngIf="feedings.length == 0">No scheduled feedings</h3>
+            <h3 class="status" *ngIf="!feedings.length == 0 && !anyEnabled()">All scheduled feedings are off</h3>
+            <h3 class="status" *ngIf="!feedings.length == 0 && anyEnabled()">Feeding in {{ timeUntilNext | date: 'HH'}}
+                hours {{ timeUntilNext | date: 'mm'}} minutes</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <schedule-card *ngFor="let f of feedings" [item]="f" [deleteMode]="false"
+                (enabledChanged)="changeNextFeeding($event)"></schedule-card>
+        </div>
     </div>
 </div>

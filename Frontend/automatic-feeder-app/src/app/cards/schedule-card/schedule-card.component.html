@@ -17,6 +17,6 @@
         <button class="delete-button" (click)="delete()"><fa-icon [icon]="trash"></fa-icon></button>
     </div> -->
     <div class="col-4 toggler-container">
-        <mat-slide-toggle [(ngModel)]="item.enabled"></mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="item.enabled" (change)="enabledChanged.emit()"></mat-slide-toggle>
     </div>
 </div>

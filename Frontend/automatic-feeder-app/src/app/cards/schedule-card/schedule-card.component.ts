@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
 import { faTrashAlt, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
@@ -13,6 +13,8 @@ export class ScheduleCardComponent implements OnInit {
   item: ScheduledFeeding;
   @Input()
   deleteMode: boolean;
+  @Output()
+  enabledChanged = new EventEmitter();
   trash = faTrashAlt;
   circles = [];
 

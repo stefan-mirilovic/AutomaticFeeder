@@ -1,24 +1,32 @@
 .container {
     width: 100%;
     border: none;
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.9);
     border-radius: 10px;
     margin-bottom: 20px;
+    -webkit-transition: background-color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-in;
+    transition: background-color 0.2s ease-in;
+}
+
+.container:hover {
+    background-color: rgba(245, 245, 245);
 }
 
 .title-container {
     font-weight: 100;
-    padding: 25px 0 20px 20px;
+    padding: 42px 0 45px 20px;
 }
 
 .amount-container {
     text-align: center;
-    padding: 20px 0 20px 0;
+    padding: 38px 0 20px 0;
 }
 
 .toggler-container {
     text-align: right;
-    padding: 30px 0 20px 0;
+    padding: 50px 0 20px 0;
 }
 
 .title {
