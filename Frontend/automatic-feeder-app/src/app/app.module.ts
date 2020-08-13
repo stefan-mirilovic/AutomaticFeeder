@@ -9,13 +9,15 @@ import { SchedulePageComponent } from './pages/schedule-page/schedule-page.compo
 import { ScheduleCardComponent } from './cards/schedule-card/schedule-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
+import { ButtonPageComponent } from './pages/button-page/button-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     SchedulePageComponent,
-    ScheduleCardComponent
+    ScheduleCardComponent,
+    ButtonPageComponent
   ],
   imports: [
     BrowserModule,

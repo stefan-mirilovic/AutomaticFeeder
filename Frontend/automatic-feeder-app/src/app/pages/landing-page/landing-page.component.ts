@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faFish, faPlus, faMinus, faCircle, faClock, faHome, faInfoCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
+import { faClock, faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,48 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  faFish = faFish;
-  plus = faPlus;
-  minus = faMinus;
   clock = faClock;
   home = faHome;
   info = faInfoCircle;
-  question = faQuestionCircle;
-  circles = [];
-  amountNo = 4;
+  time = new Date();
 
-
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    this.adjustDots();
+      setInterval(() => {
+        this.time = new Date();
+      }, 1000);
   }
-
-  adjustDots() {
-    let altCircles = [];
-    for (let i = 0; i < this.amountNo; i++) {
-      altCircles.push(faCircle);
-    }
-    for (let i = this.amountNo; i < 8; i++) {
-      altCircles.push(farCircle);
-    }
-    this.circles = altCircles;
-  }
-
-  incAmount() {
-    if (this.amountNo == 8) {
-      return;
-    }
-    this.amountNo++;
-    this.adjustDots();
-  }
-
-  decAmount() {
-    if (this.amountNo == 1) {
-      return;
-    }
-    this.amountNo--;
-    this.adjustDots();
-  }
-
 }

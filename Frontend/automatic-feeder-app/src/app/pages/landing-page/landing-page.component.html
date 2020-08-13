@@ -10,7 +10,14 @@
 
 <div id="box-div">
     <div id="content-div">
-        <h2>Automatic Feeder</h2>
+        <div class="row topbar">
+            <div class="col-4 topbar-title-container">
+                <h4>Automatic Feeder</h4>
+            </div>
+            <div class="col-4 topbar-time-container">
+                {{ time | date: 'hh:mm:ss a' }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-2 menu-container">
                 <div class="row">
@@ -51,39 +58,7 @@
                 </div>
             </div>
             <div class="col-8">
-                <div class="row">
-                    <button class="feed-button">
-                        <fa-icon class="feed-button-icon" [icon]="faFish" matTooltip="Feed manually"
-                        [matTooltipShowDelay]="1000"></fa-icon>
-                    </button>
-                </div>
-                <div class="row amount-container">
-                    <div class="col-3 amount-button-container">
-                        <button class="amount-button" (click)="decAmount()" [disabled]="amountNo == 1">
-                            <fa-icon [icon]="minus"></fa-icon>
-                        </button>
-                    </div>
-                    <div class="col-6 amount-dots-container">
-                        <fa-icon class="amount-dot" [icon]="circles[0]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[1]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[2]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[3]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[4]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[5]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[6]"></fa-icon>
-                        <fa-icon class="amount-dot" [icon]="circles[7]"></fa-icon>
-                    </div>
-                    <div class="col-3 amount-button-container">
-                        <button class="amount-button" (click)="incAmount()" [disabled]="amountNo == 8">
-                            <fa-icon [icon]="plus"></fa-icon>
-                        </button>
-                    </div>
-                </div>
-                <div class="row amount-label-container">
-                    <div class="col-12">
-                        <p>Amount</p>
-                    </div>
-                </div>
+                <router-outlet></router-outlet>
             </div>
             <div class="col-2">
                 <!-- <button class="schedule-button" (click)="this.router.navigate(['/schedule']);">
