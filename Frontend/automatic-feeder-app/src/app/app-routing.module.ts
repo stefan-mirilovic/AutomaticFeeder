@@ -9,18 +9,21 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
-    pathMatch: 'full',
     children: [
       {
         path: '',
         component: ButtonPageComponent,
         pathMatch: 'full',
-      }
+      },
+      {
+        path: 'home',
+        component: ButtonPageComponent,
+      },
+      {
+        path: 'schedule',
+        component: SchedulePageComponent,
+      },
     ]
-  },
-  {
-    path: 'schedule',
-    component: SchedulePageComponent,
   },
 ];
 

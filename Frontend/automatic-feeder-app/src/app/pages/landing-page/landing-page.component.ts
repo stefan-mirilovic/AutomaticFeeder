@@ -13,7 +13,7 @@ export class LandingPageComponent implements OnInit {
   info = faInfoCircle;
   time = new Date();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
       setInterval(() => {

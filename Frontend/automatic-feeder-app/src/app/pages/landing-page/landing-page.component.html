@@ -12,7 +12,7 @@
     <div id="content-div">
         <div class="row topbar">
             <div class="col-4 topbar-title-container">
-                <h4>Automatic Feeder</h4>
+                <a routerLink="/home">Automatic Feeder</a>
             </div>
             <div class="col-4 topbar-time-container">
                 {{ time | date: 'hh:mm:ss a' }}
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-2 menu-container">
                 <div class="row">
-                    <button class="menu-button" id="home-button" (click)="this.router.navigate(['/schedule']);">
+                    <button class="menu-button" id="home-button" (click)="this.router.navigate(['/home']);">
                         <div class="row">
                             <div class="col-9">
                                 <p class="menu-text">Home</p>
@@ -45,7 +45,7 @@
                     </button>
                 </div>
                 <div class="row">
-                    <button class="menu-button" id="info-button" (click)="this.router.navigate(['/schedule']);">
+                    <button class="menu-button" id="info-button">
                         <div class="row">
                             <div class="col-9">
                                 <p class="menu-text">About</p>
