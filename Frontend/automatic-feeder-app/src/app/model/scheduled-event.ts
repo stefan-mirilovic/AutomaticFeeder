@@ -1,4 +1,4 @@
-export class ScheduledEvent {
+export class ScheduledFeeding {
 
     public id: number;
     public time: Date;

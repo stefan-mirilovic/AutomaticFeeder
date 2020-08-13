@@ -10,6 +10,7 @@ import { ScheduleCardComponent } from './cards/schedule-card/schedule-card.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ButtonPageComponent } from './pages/button-page/button-page.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

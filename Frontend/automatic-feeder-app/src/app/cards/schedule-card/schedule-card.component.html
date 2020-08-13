@@ -1,21 +1,22 @@
 <div class="row container">
-    <div class="col-sm-3">
-        <h5 class="vehicle-title">{{item?.time}}</h5>
+    <div class="col-4 title-container">
+        <h3 class="title" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'">{{ item?.time | date: 'HH:mm' }}</h3>
     </div>
-    <div class="col-sm-2">
-        <h6 class="vehicle-title">{{item?.brand}} {{item?.model}}, {{item?.yearBuilt}}</h6>
-        <p class="small-text">{{item?.VIN}}</p>
+    <div class="col-4 amount-container">
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[0]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[1]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[2]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[3]"></fa-icon>
+        <br>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[4]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[5]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[6]"></fa-icon>
+        <fa-icon class="amount-dot" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'" [icon]="circles[7]"></fa-icon>
     </div>
-    <div class="col-sm-2">
-        <p class="price-text">{{availability?.price}}€ + {{availability?.pricePerKilometer}}€/km</p>
-    </div>
-    <div class="col-sm-3 date-div">
-        <p class="date-text">from {{startDateTime}} to {{endDateTime}}</p>
-    </div>
-    <div class="col-sm-1">
-        <button class="delete-button" (click)="delete()"><i class="fas fa-trash-alt"></i></button>
-    </div>
-    <div class="col-sm-1 checkbox-div">
-        <mat-slide-toggle></mat-slide-toggle>
+    <!-- <div class="col-1">
+        <button class="delete-button" (click)="delete()"><fa-icon [icon]="trash"></fa-icon></button>
+    </div> -->
+    <div class="col-4 toggler-container">
+        <mat-slide-toggle [(ngModel)]="item.enabled"></mat-slide-toggle>
     </div>
 </div>
