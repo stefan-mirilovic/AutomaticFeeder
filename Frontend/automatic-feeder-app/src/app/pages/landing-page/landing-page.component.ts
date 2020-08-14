@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faClock, faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faHome, faInfoCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,13 +11,15 @@ export class LandingPageComponent implements OnInit {
   clock = faClock;
   home = faHome;
   info = faInfoCircle;
+  bars = faBars;
   time = new Date();
+  currPage: string;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-      setInterval(() => {
-        this.time = new Date();
-      }, 1000);
+    setInterval(() => {
+      this.time = new Date();
+    }, 1000);
   }
 }

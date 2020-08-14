@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faFish, faPlus, faMinus, faCircle, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faFish, faPlus, faMinus, faCircle, faClock, faEllipsisV, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
-import { SecureClientSessionOptions } from 'http2';
 
 @Component({
   selector: 'schedule-page',
@@ -20,6 +19,9 @@ export class SchedulePageComponent implements OnInit {
   feedings = Array<ScheduledFeeding>();
   nextTime: Date;
   timeUntilNext: Date;
+  ellipsisv = faEllipsisV;
+  trash = faTrashAlt;
+  deleteMode = false;
 
   constructor(private router: Router) { }
 
@@ -68,7 +70,7 @@ export class SchedulePageComponent implements OnInit {
     for (let item of sortedArray) {
       if (item.enabled) {
         this.nextTime = item.time;
-        this.nextTime.setDate(new Date().getDate() + 1);
+        // this.nextTime.setDate(new Date().getDate() + 1);
         this.calculateTimeUntil();
         return;
       }
@@ -121,6 +123,16 @@ export class SchedulePageComponent implements OnInit {
     // } else if (now.getHours() - n1.time.getHours() > now.getHours() - n2.time.getHours()) {
     //   return -1;
     // }
+  }
+
+  changeDeleteMode() {
+    this.deleteMode = !this.deleteMode;
+    if (this.deleteMode) {
+      this.trash = faTimes;
+    } else {
+      this.trash = faTrashAlt;
+    }
+    // this.deleteMode ? this.trash = faTrashAlt : this.trash = faTimes
   }
 
 }

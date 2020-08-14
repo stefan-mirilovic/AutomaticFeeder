@@ -8,7 +8,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 controls-container">
+            <button class="controls-button"><fa-icon [icon]="plus"></fa-icon></button>
+            <button class="controls-button" (click)="changeDeleteMode()"><fa-icon [icon]="trash"></fa-icon></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 cards-container">
             <schedule-card *ngFor="let f of feedings" [item]="f" [deleteMode]="false"
                 (enabledChanged)="changeNextFeeding($event)"></schedule-card>
         </div>

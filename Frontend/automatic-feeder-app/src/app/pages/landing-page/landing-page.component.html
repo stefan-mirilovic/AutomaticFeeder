@@ -1,68 +1,77 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <button class="feed-button">Feed</button>
-        </div>
-        <div class="col-3"></div>
-    </div>
-</div> -->
+<nav class="navbar topbar navbar-expand-md navbar-dark fixed-top">
+    <a class="navbar-brand topbar-title-container" routerLink="/home">Automatic Feeder</a>
+    <!-- <div class="topbar-time-container">
+        {{ time | date: 'HH:mm:ss' }}
+    </div> -->
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        MENU<fa-icon [icon]="bars"></fa-icon>
+    </button>
 
-    <div id="content-div">
-        <div class="row topbar">
-            <div class="col-4 topbar-title-container">
-                <a routerLink="/home">Automatic Feeder</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/home">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/schedule">Schedule</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/schedule">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="content-div">
+
+    <div class="row">
+        <div class="col-md-2 hidden-xs hidden-sm menu-container">
+            <div class="row">
+                <button class="menu-button" id="home-button" (click)="this.router.navigate(['/home']);">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="menu-text">Home</p>
+                        </div>
+                        <div class="col-3">
+                            <fa-icon [icon]="home"></fa-icon>
+                        </div>
+                    </div>
+                </button>
             </div>
-            <div class="col-4 topbar-time-container">
-                {{ time | date: 'HH:mm:ss' }}
+            <div class="row">
+                <button class="menu-button" id="schedule-button" (click)="this.router.navigate(['/schedule']);">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="menu-text">Schedule</p>
+                        </div>
+                        <div class="col-3">
+                            <fa-icon [icon]="clock"></fa-icon>
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="row">
+                <button class="menu-button" id="info-button">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="menu-text">About</p>
+                        </div>
+                        <div class="col-3">
+                            <fa-icon [icon]="info"></fa-icon>
+                        </div>
+                    </div>
+                </button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-2 menu-container">
-                <div class="row">
-                    <button class="menu-button" id="home-button" (click)="this.router.navigate(['/home']);">
-                        <div class="row">
-                            <div class="col-9">
-                                <p class="menu-text">Home</p>
-                            </div>
-                            <div class="col-3">
-                                <fa-icon [icon]="home"></fa-icon>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-                <div class="row">
-                    <button class="menu-button" id="schedule-button" (click)="this.router.navigate(['/schedule']);">
-                        <div class="row">
-                            <div class="col-9">
-                                <p class="menu-text">Schedule</p>
-                            </div>
-                            <div class="col-3">
-                                <fa-icon [icon]="clock"></fa-icon>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-                <div class="row">
-                    <button class="menu-button" id="info-button">
-                        <div class="row">
-                            <div class="col-9">
-                                <p class="menu-text">About</p>
-                            </div>
-                            <div class="col-3">
-                                <fa-icon [icon]="info"></fa-icon>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="col-lg-8 col-10">
-                <router-outlet></router-outlet>
-            </div>
-            <div class="col-lg-2">
-                <!-- <button class="schedule-button" (click)="this.router.navigate(['/schedule']);">
+        <div class="col-md-8 col-12">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-2 hidden-xs hidden-sm ">
+            <!-- <button class="schedule-button" (click)="this.router.navigate(['/schedule']);">
                     <fa-icon [icon]="clock"></fa-icon>
                 </button> -->
-            </div>
         </div>
     </div>
+</div>

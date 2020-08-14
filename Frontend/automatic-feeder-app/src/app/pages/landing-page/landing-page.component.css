@@ -1,67 +1,26 @@
-body {
+html, body {
     overflow: hidden; /* Hide scrollbars */
 }
-/* 
-@media only screen and (max-width: 800px) {
-    .feed-button {
-        margin: 0px auto;
-        margin-top: 5vw;
-        width: 50vw;
-        height: 50vw;
-        border-radius: 25vw;
-        border: solid white 5px;
-        background-color: #7fc556;
-        position:relative;
-        -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        font-size: 20vw;
-        color: white;-webkit-transition: all 0.2s ease-in;
-        -moz-transition: all 0.2s ease-in;
-        -o-transition: all 0.2s ease-in;
-        transition: all 0.2s ease-in;
-    }
 
-    .feed-button:hover {
-        background-color: #89d65d;
-        font-size: 24vw;
-        
-    }
-} */
+a:link {
+    text-decoration: none;
+}
 
-/* @media only screen and (min-width: 800px) { */
-    .feed-button {
-        margin: 0px auto;
-        /* margin-top: 5vw;
-        width: 25vw;
-        height: 25vw;
-        border-radius: 12.5vw; */
-        margin-top: 70px;
-        width: 400px;
-        height: 400px;
-        border-radius: 200px;
-        border: solid white 5px;
-        background-color: #7fc556;
-        position:relative;
-        -webkit-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        -moz-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        /* font-size: 10vw; */
-        font-size: 180px;
-        color: white;
-        -webkit-transition: all 0.2s ease-in;
-        -moz-transition: all 0.2s ease-in;
-        -o-transition: all 0.2s ease-in;
-        transition: all 0.2s ease-in;
-    }
+a:visited {
+    text-decoration: none;
+}
 
-    .feed-button:hover {
-        background-color: #89d65d;
-        /* font-size: 12vw; */
-        font-size: 220px;
-    }
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
 
 #content-div {
+    margin-top: 56px;
+    margin-bottom: -56px;
     background: #7eaacd;
     background: -webkit-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
     background: -moz-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
@@ -80,6 +39,27 @@ body {
     width:100%;
     height: 100%;
     overflow-x: hidden; /* Hide scrollbars */
+}
+
+.navbar-collapse {
+    background-color: #212529;
+    /* text-align: center; */
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.navbar-collapse li {
+    margin-right: 40px;
+}
+
+.navbar-toggler {
+    font-size: 12px;
+    height: 40px;
+    background-color: #ffc04b;
+    color: white;
+}
+
+.navbar-toggler fa-icon{
+    margin-left: 5px;
 }
 
 /* width */
@@ -105,10 +85,8 @@ body {
   }
 
 .topbar-title-container {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 6px;
-    font-size: 22px;
+    /* text-align: center;
+    font-size: 22px; */
     color: #ffc04b;
     font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
@@ -117,87 +95,19 @@ body {
     color: #ffc04b;
 }
 
-a:link {
-    text-decoration: none;
-  }
-  
-  a:visited {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: none;
-  }
-  
-  a:active {
-    text-decoration: none;
-  }
-
 .topbar-time-container {
     text-align: center;
-    margin-top: 12px;
     color: #ffc04b;
 }
 
 .topbar {
     background-color: #212529;
+    color: #ffc04b;
+    padding-left: 120px;
+    padding-right: 120px;
     /* position: fixed;
     width: 100%;
     top: 0; */
-}
-
-.amount-container {
-    margin: auto;
-    margin-top: 30px;
-    width: 400px;
-}
-
-.amount-button-container {
-    margin: 0 auto;
-    padding: 0;
-}
-
-.amount-button {
-    margin-left: 20px;
-    width: 60px;
-    height: 60px;
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-}
-
-.amount-button:disabled {
-    background-color: rgb(245, 245, 245, 50%);
-}
-
-.amount-button:hover:not(:disabled) {
-    background-color: white;
-    font-size: 21px;
-}
-
-.amount-dots-container {
-    width: 100%;
-    padding: 0 30px;
-    color: whitesmoke;
-}
-
-.amount-dot {
-    margin: 0 5px;
-    font-size: 25px;
-}
-
-.amount-label-container {
-    padding: 0;
-    margin: 0 auto;
-    margin-top: 10px;
-    text-align: center;
-    font-family: 'Roboto';
-    letter-spacing: 1px;
-    color: rgb(240, 240, 240);
 }
 
 button:focus {
@@ -229,9 +139,8 @@ button:focus {
     border: 15px solid white;
 }
 
-.menu-container {
-    padding-top: 40px;
-}
+/* .menu-container {
+} */
 
 #home-button {
     background-color: #7fc556;
@@ -262,6 +171,14 @@ button:focus {
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
+    transition: visibility none;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .menu-button {
+        visibility: hidden;
+    }
 }
 
 .menu-text {
@@ -275,24 +192,23 @@ button:focus {
     transition: all 0.2s ease-in;
 }
 
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     .menu-button:hover {
         width: 240px;
     }
+} */
+
+.menu-button:hover {
+    margin-left: 0px;
+}
+.menu-button:hover .menu-text {
+    visibility: visible;
+    -moz-opacity:1; 
+    filter:alpha(opacity=1); 
+    opacity:1;
+    transition-delay: 0.2s;
 }
 
-@media only screen and (min-width: 800px) {
-    .menu-button:hover {
-        margin-left: 0px;
-    }
-    .menu-button:hover .menu-text {
-        visibility: visible;
-        -moz-opacity:1; 
-        filter:alpha(opacity=1); 
-        opacity:1;
-        transition-delay: 0.2s;
-    }
-}
 
 #amount-help {
     margin: 0;
