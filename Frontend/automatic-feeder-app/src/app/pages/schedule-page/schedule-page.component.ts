@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { faFish, faPlus, faMinus, faCircle, faClock, faEllipsisV, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class SchedulePageComponent implements OnInit {
   ellipsisv = faEllipsisV;
   trash = faTrashAlt;
   deleteMode = false;
+  isSticky: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -134,5 +135,10 @@ export class SchedulePageComponent implements OnInit {
     }
     // this.deleteMode ? this.trash = faTrashAlt : this.trash = faTimes
   }
+
+  // @HostListener('window:scroll', ['$event'])
+  // checkScroll() {
+  //   this.isSticky = window.pageYOffset >= 250;
+  // }
 
 }

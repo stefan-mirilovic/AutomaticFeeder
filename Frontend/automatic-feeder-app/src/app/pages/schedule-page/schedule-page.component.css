@@ -20,15 +20,34 @@ button:focus {
 .controls-container {
     display: flex;
     justify-content: flex-end;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    /* position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    height: 100%;
+    top: 100px; */
+}
+
+.mat-elevation-z5 {
+    position: relative;
+}
+
+.controls-container-sticky {
+    position: fixed;
+    top: 50px;
 }
 
 .controls-button {
+    /* position: -webkit-sticky;
+    position: sticky;
+    top: 100px; */
     margin: 0 0 20px 20px;
     width: 60px;
     height: 60px;
     border: none;
     border-radius: 30px;
     font-size: 18px;
+    color: rgba(0, 0, 0, 0.8);
     /* -webkit-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow:0 1px 10px rgba(0, 0, 0, 0.3); */
@@ -36,8 +55,70 @@ button:focus {
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
+    -webkit-transition: opacity 0.1s ease-in;
+    -moz-transition: opacity 0.1s ease-in;
+    -o-transition: opacity 0.1s ease-in;
+    transition: opacity 0.1s ease-in;
+    transition-delay: visibility 0.1s;
+}
+
+.controls-button:hover {
+    color: rgba(0, 0, 0);
 }
 
 .cards-container {
     padding: 0;
+}
+
+.delete-controls-container {
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 12vh;
+    background-color: #212529;
+    border-radius: 20px 20px 0 0;   
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.delete-controls-container-collapsed {
+    margin-bottom: -12vh;
+}
+
+.delete-controls-container-extended {
+    margin-bottom: 0;
+}
+
+.delete-controls-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-controls-button {
+    border: none;
+    width: 100px;
+    height: 50%;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.delete-controls-button:hover {
+    color: rgba(255, 255, 255);
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.non-transparent {
+    opacity: 100;
+    visibility: visible;
 }

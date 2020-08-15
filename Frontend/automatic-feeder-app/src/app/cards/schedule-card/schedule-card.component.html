@@ -1,4 +1,7 @@
 <div class="row container">
+    <div class="col-2 delete-container" *ngIf="deleteMode">
+        <button class="delete-button faded-text" (click)="delete()"><fa-icon [icon]="trash"></fa-icon></button>
+    </div>
     <div class="col-4 title-container">
         <h3 class="title" [ngClass]="item?.enabled ? 'black-text' : 'faded-text'">{{ item?.time | date: 'HH:mm' }}</h3>
     </div>
@@ -16,7 +19,7 @@
     <!-- <div class="col-1">
         <button class="delete-button" (click)="delete()"><fa-icon [icon]="trash"></fa-icon></button>
     </div> -->
-    <div class="col-4 toggler-container">
+    <div class="col-4 toggler-container" *ngIf="!deleteMode">
         <mat-slide-toggle [(ngModel)]="item.enabled" (change)="enabledChanged.emit()"></mat-slide-toggle>
     </div>
 </div>

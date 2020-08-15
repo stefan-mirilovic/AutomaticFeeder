@@ -35,4 +35,8 @@ export class ScheduleCardComponent implements OnInit {
     this.circles = altCircles;
   }
 
+  delete() {
+    
+  }
+
 }

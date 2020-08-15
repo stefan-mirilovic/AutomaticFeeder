@@ -57,6 +57,7 @@ body {
     height: 60px;
     border-radius: 30px;
     font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
     /* width: 8vh;
     height: 8vh;
     border-radius: 4vh;
@@ -76,7 +77,8 @@ body {
 
 .amount-button:hover:not(:disabled) {
     background-color: white;
-    font-size: 21px;
+    color: black;
+    /* font-size: 21px; */
     /* font-size: 2.9vh; */
 }
 
