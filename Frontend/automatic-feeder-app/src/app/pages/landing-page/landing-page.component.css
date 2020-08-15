@@ -44,11 +44,39 @@ a:active {
 .navbar-collapse {
     background-color: #212529;
     /* text-align: center; */
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    /* font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; */
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.navbar-nav {
+    width: 100%;
+    display: inline-block;
 }
 
 .navbar-collapse li {
-    margin-right: 40px;
+    /* margin-right: 20px; */
+    width: 32%;
+    margin-top: 8px;
+    height: 80px;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.nav-home {
+    margin-right: 2%;
+    background-color: #7fc556;
+}
+
+.nav-schedule {
+    margin-right: 2%;
+    background-color: #ffc04b;
+}
+
+.nav-about {
+    background-color: #5683c5;
 }
 
 .navbar-toggler {
@@ -65,7 +93,7 @@ a:active {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
   
   /* Track */
   ::-webkit-scrollbar-track {
@@ -105,42 +133,11 @@ a:active {
     color: #ffc04b;
     padding-left: 120px;
     padding-right: 120px;
-    /* position: fixed;
-    width: 100%;
-    top: 0; */
 }
 
 button:focus {
     outline: none;
 }
-
-.schedule-button {
-    margin-top: 50px;
-    margin-left: 10px;
-    height: 100px;
-    width: 100px;
-    border: 5px solid white;
-    background-color: #008080;
-    color: white;
-    font-size: 25px;
-    border-radius: 50px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.3s ease-in;
-}
-
-.schedule-button:hover {
-    margin-top: 40px;
-    margin-left: 0px;
-    height: 120px;
-    width: 120px;
-    border-radius: 60px;
-    border: 15px solid white;
-}
-
-/* .menu-container {
-} */
 
 #home-button {
     background-color: #7fc556;
@@ -155,7 +152,7 @@ button:focus {
     background-color: #5683c5;
     margin-top: 160px;
 }
-
+/* Meni sa desne strane */
 .menu-button {
     position: fixed;
     color: white;
@@ -174,12 +171,55 @@ button:focus {
     transition: visibility none;
 }
 
+.menu-button:hover {
+    margin-left: 0px;
+}
 
-@media only screen and (max-width: 768px) {
+/* Meni sa leve strane */
+/* 
+.menu-button {
+    position: fixed;
+    color: white;
+    border: none;
+    top: 65px;
+    right: 0;
+    margin-right: -120px;
+    width: 200px;
+    height: 80px;
+    font-size: 20px;
+    border-radius: 20px 0 0 20px;
+    text-align: left;
+    padding: 15px 0 0 20px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    transition: visibility none;
+    z-index : 1; 
+}
+
+.menu-button:hover {
+    margin-right: 0;
+} */
+
+@media only screen and (max-width: 992px) {
     .menu-button {
         visibility: hidden;
     }
 }
+
+@media only screen and (min-width: 992px) {
+    .navbar-collapse {
+        visibility: hidden;
+    }
+
+    .navbar-collapse li {
+        height: 100%;
+        margin-top: 0;
+        font-size: 0;
+    }
+}
+
 
 .menu-text {
     visibility: hidden;
@@ -192,15 +232,6 @@ button:focus {
     transition: all 0.2s ease-in;
 }
 
-/* @media only screen and (max-width: 800px) {
-    .menu-button:hover {
-        width: 240px;
-    }
-} */
-
-.menu-button:hover {
-    margin-left: 0px;
-}
 .menu-button:hover .menu-text {
     visibility: visible;
     -moz-opacity:1; 

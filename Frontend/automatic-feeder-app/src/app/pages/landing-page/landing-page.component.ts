@@ -18,8 +18,8 @@ export class LandingPageComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    setInterval(() => {
-      this.time = new Date();
-    }, 1000);
+    // setInterval(() => {
+    //   this.time = new Date();
+    // }, 1000);
   }
 }
