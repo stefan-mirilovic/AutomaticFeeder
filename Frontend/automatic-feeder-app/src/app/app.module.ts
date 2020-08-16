@@ -12,6 +12,7 @@ import { MaterialModule } from './material-module';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { FormsModule } from '@angular/forms';
 import { CreateScheduleDialogComponent } from './dialogs/create-schedule-dialog/create-schedule-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CreateScheduleDialogComponent } from './dialogs/create-schedule-dialog/
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule

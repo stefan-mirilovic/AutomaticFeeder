@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
 import { CreateScheduleDialogComponent } from 'src/app/dialogs/create-schedule-dialog/create-schedule-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ScheduledFeedingService } from 'src/app/service/scheduled-feeding.service';
 
 @Component({
   selector: 'schedule-page',
@@ -26,18 +27,20 @@ export class SchedulePageComponent implements OnInit {
   deleteMode = false;
 
   constructor(
+    private scheduledFeedingService: ScheduledFeedingService,
     private router: Router,
     private createDialog: MatDialog
     ) { }
 
   ngOnInit() {
-    this.feedings.push(new ScheduledFeeding(0, new Date("2018-08-15 16:25:30.0"), 6, false));
-    this.feedings.push(new ScheduledFeeding(1, new Date("2018-08-15 17:25:30.0"), 4, false));
-    this.feedings.push(new ScheduledFeeding(2, new Date("2018-08-15 18:25:30.0"), 2, false));
-    this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 19:25:30.0"), 7, false));
-    this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 20:25:30.0"), 7, false));
-    this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 21:25:30.0"), 1, false));
-    this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 22:25:30.0"), 8, false));
+    // this.feedings.push(new ScheduledFeeding(0, new Date("2018-08-15 16:25:30.0"), 6, false));
+    // this.feedings.push(new ScheduledFeeding(1, new Date("2018-08-15 17:25:30.0"), 4, false));
+    // this.feedings.push(new ScheduledFeeding(2, new Date("2018-08-15 18:25:30.0"), 2, false));
+    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 19:25:30.0"), 7, false));
+    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 20:25:30.0"), 7, false));
+    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 21:25:30.0"), 1, false));
+    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 22:25:30.0"), 8, false));
+    this.getAll();
     setInterval(() => {
       if (this.nextTime != null) {
         this.calculateTimeUntil();
@@ -71,11 +74,41 @@ export class SchedulePageComponent implements OnInit {
         sortedArray.push(f);
       }
     }
+    // if (sortedArray.length == 0) {
+    //   this.nextTime = null;
+    //   return;
+    // }
+    // let now = new Date();
+    // let min : ScheduledFeeding = sortedArray[0];
+    // let minHours = +min.time.split(':')[0];
+    // let minMinutes = +min.time.split(':')[1];
+    // for (let i = 1; i < sortedArray.length; i++) {
+    //   let hours = +sortedArray[i].time.split(':')[0];
+    //   let minutes = +sortedArray[i].time.split(':')[1];
+    //   if (hours - now.getHours() == minHours - now.getHours()) {
+    //     if (minutes - now.getMinutes() < minMinutes - now.getMinutes()) {
+    //       minHours = hours;
+    //       minMinutes = minutes;
+    //       min = sortedArray[i];
+    //     } else {
+    //       continue;
+    //     }
+    //   } else if (hours - now.getHours() < minHours - now.getHours()) {
+    //     minHours = hours;
+    //     minMinutes = minutes;
+    //     min = sortedArray[i];
+    //   } else {
+    //     continue;
+    //   }
+    // }
+    // this.nextTime = new Date();
+    // this.nextTime.setHours(+min.time.split(':')[0], +min.time.split(':')[1], 0, 0);
+    // this.calculateTimeUntil();
     sortedArray.sort((n1,n2)=> this.compareTimeToNow(n1, n2));
     for (let item of sortedArray) {
       if (item.enabled) {
-        this.nextTime = item.time;
-        // this.nextTime.setDate(new Date().getDate() + 1);
+        this.nextTime = new Date();
+        this.nextTime.setHours(+item.time.split(':')[0], +item.time.split(':')[1], 0, 0);
         this.calculateTimeUntil();
         return;
       }
@@ -84,50 +117,35 @@ export class SchedulePageComponent implements OnInit {
     return;
   }
 
-  compareTime(n1: ScheduledFeeding, n2: ScheduledFeeding) {
-    if (n1.time.getTime() == n2.time.getTime()) {
-      return n1.amount - n2.amount;
-    } else if (n1.time.getTime() < n2.time.getTime()) {
-      return 1;
-    } else if (n1.time.getTime() > n2.time.getTime()) {
-      return -1;
-    }
-  }
-
   compareTimeToNow(n1: ScheduledFeeding, n2: ScheduledFeeding) {
     let now = new Date();
     // console.log(now.getTime());
-    // console.log(n1.time.getTime());
-    // console.log(n2.time.getTime());
-    n1.time.setFullYear(now.getFullYear());
-    n1.time.setMonth(now.getMonth());
-    n1.time.setDate(now.getDate());
-    n2.time.setFullYear(now.getFullYear());
-    n2.time.setMonth(now.getMonth());
-    n2.time.setDate(now.getDate());
+    // console.log(n1Time.getTime());
+    // console.log(n2Time.getTime());
+    let n1Time = new Date();
+    let n2Time = new Date();
+    // n1Time.setFullYear(now.getFullYear());
+    // n1Time.setMonth(now.getMonth());
+    // n1Time.setDate(now.getDate());
+    // n2Time.setFullYear(now.getFullYear());
+    // n2Time.setMonth(now.getMonth());
+    // n2Time.setDate(now.getDate());
+    n1Time.setHours(+n1.time.split(':')[0], +n1.time.split(':')[1], 0, 0)
+    n2Time.setHours(+n2.time.split(':')[0], +n2.time.split(':')[1], 0, 0)
 
-    if (n1.time.getTime() <= now.getTime()) {
-      n1.time.setDate(now.getDate() + 1);
+    if (n1Time.getTime() <= now.getTime()) {
+      n1Time.setDate(now.getDate() + 1);
     }
-    if (n2.time.getTime() <= now.getTime()) {
-      n2.time.setDate(now.getDate() + 1);
+    if (n2Time.getTime() <= now.getTime()) {
+      n2Time.setDate(now.getDate() + 1);
     }
-    if (n1.time.getTime() == n2.time.getTime()) {
+    if (n1Time.getTime() == n2Time.getTime()) {
       return n1.amount - n2.amount;
-    } else if (n1.time.getTime() > n2.time.getTime()) {
+    } else if (n1Time.getTime() > n2Time.getTime()) {
       return 1;
-    } else if (n1.time.getTime() < n2.time.getTime()) {
+    } else if (n1Time.getTime() < n2Time.getTime()) {
       return -1;
     }
-    // let n1Hours = n1.time.getHours();
-    // if (n1Hours)
-    // if (n1.time.getHours() == n2.time.getHours()) {
-
-    // } else if (now.getHours() - n1.time.getHours() < now.getHours() - n2.time.getHours()) {
-    //   return 1;
-    // } else if (now.getHours() - n1.time.getHours() > now.getHours() - n2.time.getHours()) {
-    //   return -1;
-    // }
   }
 
   changeDeleteMode() {
@@ -153,8 +171,39 @@ export class SchedulePageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.getAll();
+      }
     })
   }
 
+  getAll() {
+    this.scheduledFeedingService.getAll().subscribe({
+      next: (result) => {
+        this.feedings = result;
+        this.changeNextFeeding();
+      },
+      error: data => {
+        if (data.error && typeof data.error === "string")
+          console.log(data.error);
+        else
+          console.log("Could not load schedule.");
+      }
+    })
+  }
+
+  deleteAll() {
+    this.scheduledFeedingService.deleteAll().subscribe({
+      next: () => {
+        this.getAll();
+        this.deleteMode = false;
+      },
+      error: data => {
+        if (data.error && typeof data.error === "string")
+          console.log(data.error);
+        else
+          console.log("Could not delete all scheduled feedings.");
+      }
+    })
+  }
 }

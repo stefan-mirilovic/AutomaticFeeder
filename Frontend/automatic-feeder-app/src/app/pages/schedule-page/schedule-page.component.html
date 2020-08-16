@@ -18,12 +18,12 @@
     <div class="row">
         <div class="col-12 cards-container">
             <schedule-card *ngFor="let f of feedings" [item]="f" [deleteMode]="deleteMode"
-                (enabledChanged)="changeNextFeeding($event)"></schedule-card>
+                (enabledChanged)="changeNextFeeding($event)" (reload)="getAll($event)"></schedule-card>
         </div>
     </div>
     <div class="row delete-controls-container" [ngClass]="deleteMode ? 'delete-controls-container-extended' : 'delete-controls-container-collapsed'">
         <div class="col-6 delete-controls-container2">
-            <button class="delete-controls-button" (click)="changeDeleteMode()">Delete All</button>
+            <button class="delete-controls-button" (click)="deleteAll()">Delete All</button>
         </div>
         <div class="col-6 delete-controls-container2">
             <button class="delete-controls-button" (click)="changeDeleteMode()">Cancel</button>

@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { faChevronCircleUp, faChevronCircleDown, faCircle, faChevronUp, faChevronDown, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faCircle as farCircle} from '@fortawesome/free-regular-svg-icons';
+import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
+import { ScheduledFeedingService } from 'src/app/service/scheduled-feeding.service';
 
 @Component({
   selector: 'app-create-schedule-dialog',
@@ -19,8 +20,10 @@ export class CreateScheduleDialogComponent implements OnInit {
   circles = [];
   amountNo = 4;
   submitButtonText: string = 'Create';
+  editMode: boolean;
 
   constructor(
+    public scheduledFeedingService: ScheduledFeedingService,
     public dialogRef: MatDialogRef<CreateScheduleDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ScheduledFeeding
   ) { }
@@ -28,10 +31,14 @@ export class CreateScheduleDialogComponent implements OnInit {
   ngOnInit() {
     if (this.data.amount) {
       this.amountNo = this.data.amount;
-      this.hours = this.data.time.getHours();
-      this.minutes = this.data.time.getMinutes();
+      // this.hours = new Date(this.data.time).getHours();
+      // this.minutes = new Date(this.data.time).getMinutes();
+      this.hours = +(this.data.time.split(':')[0]);
+      this.minutes = +(this.data.time.split(':')[1]);
       this.submitButtonText = 'Save';
+      this.editMode = true;
     } else {
+      this.editMode = false;
       let now = new Date();
       this.hours = now.getHours();
       let rem = now.getMinutes() % 5;
@@ -41,7 +48,7 @@ export class CreateScheduleDialogComponent implements OnInit {
         this.minutes = now.getMinutes() + 5 - rem;
       }
     }
-    
+
     this.adjustDots();
   }
 
@@ -108,4 +115,40 @@ export class CreateScheduleDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  create() {
+    if (!this.editMode) {
+      let time = new Date();
+      time.setHours(this.hours);
+      time.setMinutes(this.minutes);
+      let schedule = new ScheduledFeeding(null, time.toLocaleTimeString('en-GB'), this.amountNo, true);
+      // let schedule = new ScheduledFeeding(null, `${ this.hours }:${ this.minutes }:0`, this.amountNo, true);
+      this.scheduledFeedingService.create(schedule).subscribe({
+        next: () => {
+          this.dialogRef.close(true);
+        },
+        error: data => {
+          if (data.error && typeof data.error === "string")
+            console.log(data.error);
+          else
+            console.log("Could not create scheduled feeding.");
+        }
+      })
+    } else {
+      let time = new Date();
+      time.setHours(this.hours);
+      time.setMinutes(this.minutes);
+      let schedule = new ScheduledFeeding(this.data.id, time.toLocaleTimeString('en-GB'), this.amountNo, true);
+      this.scheduledFeedingService.update(schedule).subscribe({
+        next: () => {
+          this.dialogRef.close(true);
+        },
+        error: data => {
+          if (data.error && typeof data.error === "string")
+            console.log(data.error);
+          else
+            console.log("Could not create scheduled feeding.");
+        }
+      })
+    }
+  }
 }

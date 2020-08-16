@@ -4,6 +4,7 @@ import { faTrashAlt, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
 import { MatDialog } from '@angular/material/dialog';
 import { CreateScheduleDialogComponent } from 'src/app/dialogs/create-schedule-dialog/create-schedule-dialog.component';
+import { ScheduledFeedingService } from 'src/app/service/scheduled-feeding.service';
 
 @Component({
   selector: 'schedule-card',
@@ -17,10 +18,13 @@ export class ScheduleCardComponent implements OnInit {
   deleteMode: boolean;
   @Output()
   enabledChanged = new EventEmitter();
+  @Output()
+  reload = new EventEmitter();
   trash = faTrashAlt;
   circles = [];
 
   constructor(
+    private scheduledFeedingService: ScheduledFeedingService,
     private createDialog: MatDialog
   ) { }
 
@@ -40,7 +44,17 @@ export class ScheduleCardComponent implements OnInit {
   }
 
   delete() {
-    
+    this.scheduledFeedingService.delete(this.item).subscribe({
+      next: () => {
+        this.reload.emit();
+      },
+      error: data => {
+        if (data.error && typeof data.error === "string")
+          console.log(data.error);
+        else
+          console.log("Could not delete scheduled feeding.");
+      }
+    })
   }
 
   openEditDialog() {
@@ -51,7 +65,23 @@ export class ScheduleCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.reload.emit();
+      }
+    })
+  }
+
+  enable() {
+    this.scheduledFeedingService.enable(this.item).subscribe({
+      next: () => {
+        this.enabledChanged.emit();
+      },
+      error: data => {
+        if (data.error && typeof data.error === "string")
+          console.log(data.error);
+        else
+          console.log("Could not enable scheduled feeding.");
+      }
     })
   }
 
