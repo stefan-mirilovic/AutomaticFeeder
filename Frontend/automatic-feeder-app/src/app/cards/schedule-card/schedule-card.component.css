@@ -9,6 +9,7 @@
     -moz-transition: background-color 0.2s ease-in;
     -o-transition: background-color 0.2s ease-in;
     transition: background-color 0.2s ease-in;
+    cursor: pointer;
 }
 
 .container:hover {

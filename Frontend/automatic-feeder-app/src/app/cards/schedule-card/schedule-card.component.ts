@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
 import { faTrashAlt, faCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCircle as farCircle } from '@fortawesome/free-regular-svg-icons'
+import { MatDialog } from '@angular/material/dialog';
+import { CreateScheduleDialogComponent } from 'src/app/dialogs/create-schedule-dialog/create-schedule-dialog.component';
 
 @Component({
   selector: 'schedule-card',
@@ -18,7 +20,9 @@ export class ScheduleCardComponent implements OnInit {
   trash = faTrashAlt;
   circles = [];
 
-  constructor() { }
+  constructor(
+    private createDialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.adjustDots();
@@ -37,6 +41,18 @@ export class ScheduleCardComponent implements OnInit {
 
   delete() {
     
+  }
+
+  openEditDialog() {
+    const dialogRef = this.createDialog.open(CreateScheduleDialogComponent, {
+      width: '400px',
+      height: '500px',
+      data: this.item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
   }
 
 }

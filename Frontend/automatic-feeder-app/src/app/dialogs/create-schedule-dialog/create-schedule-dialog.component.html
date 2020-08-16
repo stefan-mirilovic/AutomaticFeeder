@@ -1,0 +1,73 @@
+<div class="row time-container">
+    <div class="col-6 hours-container">
+        <div class="row">
+            <button class="button-control" (click)="incHours()">
+                <fa-icon [icon]="up"></fa-icon>
+            </button>
+        </div>
+        <span class="row time-display">
+            <h1>{{ hours }}</h1>
+        </span>
+        <div class="row">
+            <button class="button-control" (click)="decHours()">
+                <fa-icon [icon]="down"></fa-icon>
+            </button>
+        </div>
+        <span class="row time-label-container">
+            <p>Hours</p>
+        </span>
+    </div>
+    <div class="col-6 hours-container">
+        <div class="row">
+            <button class="button-control" (click)="incMinutes()">
+                <fa-icon [icon]="up"></fa-icon>
+            </button>
+        </div>
+        <div class="row time-display">
+            <h1>{{ minutes }}</h1>
+        </div>
+        <div class="row">
+            <button class="button-control" (click)="decMinutes()">
+                <fa-icon [icon]="down"></fa-icon>
+            </button>
+        </div>
+        <span class="row time-label-container">
+            <p>Minutes</p>
+        </span></div>
+</div>
+<div class="row amount-container">
+    <div class="col-3 amount-button-container">
+        <button class="amount-button" (click)="decAmount()" [disabled]="amountNo == 1">
+            <fa-icon [icon]="minus"></fa-icon>
+        </button>
+    </div>
+    <div class="col-6 amount-dots-container">
+        <fa-icon class="amount-dot" [icon]="circles[0]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[1]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[2]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[3]"></fa-icon>
+        <br>
+        <fa-icon class="amount-dot" [icon]="circles[4]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[5]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[6]"></fa-icon>
+        <fa-icon class="amount-dot" [icon]="circles[7]"></fa-icon>
+    </div>
+    <div class="col-3 amount-button-container">
+        <button class="amount-button" (click)="incAmount()" [disabled]="amountNo == 8">
+            <fa-icon [icon]="plus"></fa-icon>
+        </button>
+    </div>
+</div>
+<div class="row amount-label-container">
+    <div class="col-12">
+        <p>Amount</p>
+    </div>
+</div>
+<div class="row button-container">
+    <div class="col-6">
+        <button class="submit-button">{{submitButtonText}}</button>
+    </div>
+    <div class="col-6">
+        <button class="cancel-button" (click)="cancel()">Cancel</button>
+    </div>
+</div>

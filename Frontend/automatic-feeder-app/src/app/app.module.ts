@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { FormsModule } from '@angular/forms';
+import { CreateScheduleDialogComponent } from './dialogs/create-schedule-dialog/create-schedule-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     LandingPageComponent,
     SchedulePageComponent,
     ScheduleCardComponent,
-    ButtonPageComponent
+    ButtonPageComponent,
+    CreateScheduleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateScheduleDialogComponent,
+  ]
 })
 export class AppModule { }

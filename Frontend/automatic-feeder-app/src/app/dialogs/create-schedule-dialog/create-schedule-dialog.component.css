@@ -1,0 +1,163 @@
+.time-container {
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    padding: 0;
+    margin: 0;
+}
+
+.amount-container {
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+}
+
+.amount-container {
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+}
+
+.amount-label-container {
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    /* font-family: 'Roboto';
+    letter-spacing: 1px; */
+    /* font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; */
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.time-label-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.time-label-container p{
+    margin: auto;
+}
+
+.button-container {
+    font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    padding: 0;
+    margin: 0;
+    margin-top: 40px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.hours-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin: 0;
+    width: 100%;
+}
+
+.button-control {
+    border: none;
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    font-size: 25px;
+    color: #ffc04b;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.button-control:hover {
+    color: rgb(255, 215, 130)
+}
+
+.time-display {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 5px;
+}
+
+.time-display h1 {
+    margin: auto;
+}
+
+.amount-container {
+    width: 100%;
+}
+
+.amount-button-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.amount-button {
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 25px;
+    background-color: white;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.amount-button:hover:not(:disabled) {
+    background-color: whitesmoke;
+}
+
+.amount-dots-container {
+    text-align: center;
+}
+
+.amount-dot {
+    margin: 0 5px;
+    font-size: 24px;
+}
+
+.submit-button {
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 5px;
+    background-color: #7fc556;
+    width: 100%;
+    height: 50px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.submit-button:hover {
+    background-color: #89d65d;
+}
+
+.cancel-button {
+    border: solid rgba(0, 0, 0, 0.3) 1px;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.cancel-button:hover {
+    background-color: whitesmoke;
+}

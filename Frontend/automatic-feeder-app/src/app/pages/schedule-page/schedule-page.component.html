@@ -11,7 +11,7 @@
     <div class="row">
         <!-- [ngClass]="{'mat-elevation-z5' : true, 'controls-container-sticky' : isSticky}" -->
         <div class="col-12 controls-container" >
-            <button class="controls-button" [ngClass]="deleteMode ? 'transparent' : 'non-transparent'" [disabled]="deleteMode"><fa-icon [icon]="plus"></fa-icon></button>
+            <button class="controls-button" [ngClass]="deleteMode ? 'transparent' : 'non-transparent'" [disabled]="deleteMode" (click)="openCreateDialog()"><fa-icon [icon]="plus"></fa-icon></button>
             <button class="controls-button" (click)="changeDeleteMode()"><fa-icon [icon]="trash"></fa-icon></button>
         </div>
     </div>

@@ -3,6 +3,8 @@ import { faFish, faPlus, faMinus, faCircle, faClock, faEllipsisV, faTrashAlt, fa
 import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
+import { CreateScheduleDialogComponent } from 'src/app/dialogs/create-schedule-dialog/create-schedule-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'schedule-page',
@@ -22,9 +24,11 @@ export class SchedulePageComponent implements OnInit {
   ellipsisv = faEllipsisV;
   trash = faTrashAlt;
   deleteMode = false;
-  isSticky: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private createDialog: MatDialog
+    ) { }
 
   ngOnInit() {
     this.feedings.push(new ScheduledFeeding(0, new Date("2018-08-15 16:25:30.0"), 6, false));
@@ -140,5 +144,17 @@ export class SchedulePageComponent implements OnInit {
   // checkScroll() {
   //   this.isSticky = window.pageYOffset >= 250;
   // }
+
+  openCreateDialog() {
+    const dialogRef = this.createDialog.open(CreateScheduleDialogComponent, {
+      width: '400px',
+      height: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
 
 }
