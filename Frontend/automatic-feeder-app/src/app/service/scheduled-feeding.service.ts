@@ -34,4 +34,8 @@ export class ScheduledFeedingService {
   deleteAll() {
     return this.http.delete<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}`);
   }
+
+  manualFeeding(amount: number) {
+    return this.http.post<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}/feed/${amount}`, null);
+  }
 }
