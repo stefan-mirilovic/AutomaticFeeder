@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-about-page',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-page.component.css']
 })
 export class AboutPageComponent implements OnInit {
+  twitter = faTwitter
+  fb = faFacebookF;
+  linkedin = faLinkedinIn;
 
   constructor() { }
 

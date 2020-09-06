@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item nav-about">
-                <a class="nav-link" routerLink="/schedule">
+                <a class="nav-link" routerLink="/about">
                     <fa-icon [icon]="info"></fa-icon>
                     <br>
                     About
@@ -65,7 +65,7 @@
                 </button>
             </div>
             <div class="row">
-                <button class="menu-button" id="info-button">
+                <button class="menu-button" id="info-button" (click)="this.router.navigate(['/about']);">
                     <div class="row">
                         <div class="col-9">
                             <p class="menu-text">About</p>

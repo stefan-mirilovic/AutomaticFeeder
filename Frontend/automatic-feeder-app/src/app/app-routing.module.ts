@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { SchedulePageComponent } from './pages/schedule-page/schedule-page.component';
 import { ButtonPageComponent } from './pages/button-page/button-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'schedule',
         component: SchedulePageComponent,
+      },
+      {
+        path: 'about',
+        component: AboutPageComponent,
       },
     ]
   },
