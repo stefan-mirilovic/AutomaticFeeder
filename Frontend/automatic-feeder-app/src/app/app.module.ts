@@ -13,6 +13,7 @@ import { ButtonPageComponent } from './pages/button-page/button-page.component';
 import { FormsModule } from '@angular/forms';
 import { CreateScheduleDialogComponent } from './dialogs/create-schedule-dialog/create-schedule-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     SchedulePageComponent,
     ScheduleCardComponent,
     ButtonPageComponent,
-    CreateScheduleDialogComponent
+    CreateScheduleDialogComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,8 @@ a:active {
     background: -moz-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
     background: -o-linear-gradient(to bottom right,  whitesmoke, #7eaacd);
     background: linear-gradient(to bottom right, whitesmoke, #7eaacd);
-    background-image: url(https://wallpapercave.com/wp/hBL8JnS.jpg);
+    /* background-image: url(https://wallpapercave.com/wp/hBL8JnS.jpg); */
+    background-image: url(../../../assets/hBL8JnS.jpg);
     background-position-y: center;
     /* font-family: Verdana, Geneva, sans-serif; */
     /* font-family: "Roboto", sans-serif; */
@@ -197,6 +198,13 @@ button:focus {
 .menu-button:hover {
     margin-right: 0;
 } */
+
+@media only screen and (max-width: 544px) {
+    .topbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
 
 @media only screen and (max-width: 992px) {
     .menu-button {

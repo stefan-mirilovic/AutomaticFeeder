@@ -32,7 +32,13 @@ body {
     transition: all 0.2s ease-in;
 }
 
-.feed-button:hover {
+.feed-button:disabled {
+    background-color: gray;
+    color: lightgray;
+    border-color: lightgray;
+}
+
+.feed-button:hover:not(:disabled) {
     background-color: #89d65d;
     /* font-size: 12vw; */
     /* font-size: 220px; */

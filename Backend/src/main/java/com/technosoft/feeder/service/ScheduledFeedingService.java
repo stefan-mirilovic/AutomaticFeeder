@@ -1,17 +1,15 @@
 package com.technosoft.feeder.service;
 
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.RaspiPin;
 import com.technosoft.feeder.dto.ScheduledFeedingDTO;
 import com.technosoft.feeder.mapper.ScheduledFeedingMapper;
 import com.technosoft.feeder.model.ScheduledFeeding;
 import com.technosoft.feeder.repository.ScheduledFeedingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,42 +19,36 @@ public class ScheduledFeedingService {
     private ScheduledFeedingMapper mapper;
 
     @Autowired
+    private GpioService gpioService;
+
+    @Autowired
     private ScheduledFeedingRepository repository;
 
     public ScheduledFeedingService() {
         mapper = new ScheduledFeedingMapper();
     }
 
-    public boolean feed(int amount) throws InterruptedException {
-        final GpioController gpio = GpioFactory.getInstance();
-        final GpioPinDigitalOutput pinA = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "PinA");
-        final GpioPinDigitalOutput pinB = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_17, "PinB");
-        final GpioPinDigitalOutput pinC = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27, "PinC");
-        final GpioPinDigitalOutput pinD = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_22, "PinD");
-        System.out.println("rotate motor clockwise for 3 seconds");
-        pinA.high();
-        pinB.low();
-        pinC.low();
-        pinD.high();
-        // wait 3 seconds
-        Thread.sleep(3000);
-        System.out.println("rotate motor in oposite derection for 6 seconds");
-        pinA.low();
-        pinB.high();
-        pinC.high();
-        pinD.low();
-        // wait 6 seconds
-        Thread.sleep(3000);
-        // stop motor
-        System.out.println("Stopping motor");
-        pinB.low();
-        pinC.low();
-        gpio.shutdown();
-        return true;
+    @Scheduled(fixedDelay = 300000)
+    public void autoFeed() {
+        DateTimeFormatter formatter
+                = DateTimeFormatter.ISO_TIME;
+
+        String timeString = LocalTime.now().minusMinutes(5).format(formatter);
+        String timeNowString = LocalTime.now().format(formatter);
+        List<ScheduledFeeding> scheduledFeedings = repository.findEnabledSortedByTime(LocalTime.now().minusMinutes(5), LocalTime.now());
+        for (ScheduledFeeding scheduledFeeding : scheduledFeedings) {
+            if (!scheduledFeeding.getTime().isAfter(LocalTime.now()) && !scheduledFeeding.getTime().isBefore(LocalTime.now().minusMinutes(5))) {
+                try {
+                    gpioService.feed(scheduledFeeding.getAmount());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     public void manualFeed(int amount) throws Exception {
-        if (!feed(amount)) {
+        if (!gpioService.feed(amount)) {
             throw new Exception("An error occured while feeding!");
         }
 

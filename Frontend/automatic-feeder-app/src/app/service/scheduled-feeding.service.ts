@@ -36,6 +36,6 @@ export class ScheduledFeedingService {
   }
 
   manualFeeding(amount: number) {
-    return this.http.post<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}/feed/${amount}`, null);
+    return this.http.post<boolean>(`${environment.baseUrl}/${environment.schedule}/feed/${amount}`, null);
   }
 }

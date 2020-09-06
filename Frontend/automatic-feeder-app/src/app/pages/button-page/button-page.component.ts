@@ -18,6 +18,7 @@ export class ButtonPageComponent implements OnInit {
   question = faQuestionCircle;
   circles = [];
   amountNo = 4;
+  loading = false;
 
   constructor(private service: ScheduledFeedingService) { }
 
@@ -53,10 +54,19 @@ export class ButtonPageComponent implements OnInit {
   }
 
   manualFeeding() {
-    this.service.manualFeeding(this.amountNo).subscribe(
-      (result) => {
-        console.log(result);
+    this.loading = true;
+    this.service.manualFeeding(this.amountNo).subscribe({
+      next: (result) => {
+        this.loading = false;
+      },
+      error: data => {
+        this.loading = false;
+        if (data.error && typeof data.error === "string")
+          console.log(data.error);
+        else
+          console.log("Could not perform manual feeding.");
       }
+    }
     )
   }
 

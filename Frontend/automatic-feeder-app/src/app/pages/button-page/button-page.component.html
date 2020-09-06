@@ -1,6 +1,6 @@
 <div class="row">
-    <button class="feed-button">
-        <fa-icon class="feed-button-icon" [icon]="faFish" matTooltip="Feed manually" (click)="manualFeeding()"
+    <button class="feed-button" (click)="manualFeeding()" [disabled]="loading">
+        <fa-icon class="feed-button-icon" [icon]="faFish" matTooltip="Feed manually"
         [matTooltipShowDelay]="1000"></fa-icon>
     </button>
 </div>

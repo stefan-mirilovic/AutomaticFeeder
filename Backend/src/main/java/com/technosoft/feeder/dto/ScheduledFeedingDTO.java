@@ -1,7 +1,5 @@
 package com.technosoft.feeder.dto;
 
-import java.time.LocalTime;
-
 public class ScheduledFeedingDTO {
 
     public Long id;
