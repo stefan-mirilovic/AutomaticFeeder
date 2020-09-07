@@ -8,34 +8,35 @@ import { ScheduledFeeding } from '../model/scheduled-event';
   providedIn: 'root'
 })
 export class ScheduledFeedingService {
+  baseUrl = window.location.href.split(":")[0] + ":" + window.location.href.split(":")[1];
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<ScheduledFeeding[]> {
-    return this.http.get<ScheduledFeeding[]>(`${environment.baseUrl}/${environment.schedule}`);
+    return this.http.get<ScheduledFeeding[]>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}`);
   }
 
   create(data: ScheduledFeeding): Observable<ScheduledFeeding> {
-    return this.http.post<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}`, data);
+    return this.http.post<ScheduledFeeding>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}`, data);
   }
 
   update(data: ScheduledFeeding): Observable<ScheduledFeeding> {
-    return this.http.put<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}`, data);
+    return this.http.put<ScheduledFeeding>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}`, data);
   }
 
   enable(data: ScheduledFeeding): Observable<ScheduledFeeding> {
-    return this.http.put<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}/enable`, data);
+    return this.http.put<ScheduledFeeding>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}/enable`, data);
   }
 
   delete(data: ScheduledFeeding) {
-    return this.http.delete<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}/${data.id}`);
+    return this.http.delete<ScheduledFeeding>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}/${data.id}`);
   }
 
   deleteAll() {
-    return this.http.delete<ScheduledFeeding>(`${environment.baseUrl}/${environment.schedule}`);
+    return this.http.delete<ScheduledFeeding>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}`);
   }
 
   manualFeeding(amount: number) {
-    return this.http.post<boolean>(`${environment.baseUrl}/${environment.schedule}/feed/${amount}`, null);
+    return this.http.post<boolean>(`${this.baseUrl}${environment.baseUrl}/${environment.schedule}/feed/${amount}`, null);
   }
 }
