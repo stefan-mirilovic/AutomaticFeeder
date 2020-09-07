@@ -22,6 +22,7 @@ export class ScheduleCardComponent implements OnInit {
   reload = new EventEmitter();
   trash = faTrashAlt;
   circles = [];
+  loading = false;
 
   constructor(
     private scheduledFeedingService: ScheduledFeedingService,
@@ -44,11 +45,14 @@ export class ScheduleCardComponent implements OnInit {
   }
 
   delete() {
+    this.loading = true;
     this.scheduledFeedingService.delete(this.item).subscribe({
       next: () => {
+        this.loading = false;
         this.reload.emit();
       },
       error: data => {
+        this.loading = false;
         if (data.error && typeof data.error === "string")
           console.log(data.error);
         else
@@ -72,13 +76,17 @@ export class ScheduleCardComponent implements OnInit {
   }
 
   enable() {
+    this.loading = true;
     this.scheduledFeedingService.enable(this.item).subscribe({
       next: () => {
+        this.loading = false;
         this.enabledChanged.emit();
       },
       error: data => {
-        if (data.error && typeof data.error === "string")
+        this.loading = false;
+        if (data.error && typeof data.error === "string") {
           console.log(data.error);
+        }
         else
           console.log("Could not enable scheduled feeding.");
       }

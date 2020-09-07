@@ -142,7 +142,11 @@ button:focus {
     transition: all 0.2s ease-in;
 }
 
-.submit-button:hover {
+.submit-button:disabled {
+    background-color: lightgray;
+}
+
+.submit-button:hover:not(:disabled) {
     background-color: #89d65d;
 }
 

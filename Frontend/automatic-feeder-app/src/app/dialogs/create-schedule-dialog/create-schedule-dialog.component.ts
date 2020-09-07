@@ -21,6 +21,7 @@ export class CreateScheduleDialogComponent implements OnInit {
   amountNo = 4;
   submitButtonText: string = 'Create';
   editMode: boolean;
+  loading: boolean;
 
   constructor(
     public scheduledFeedingService: ScheduledFeedingService,
@@ -46,6 +47,13 @@ export class CreateScheduleDialogComponent implements OnInit {
         this.minutes = now.getMinutes() - rem;
       } else {
         this.minutes = now.getMinutes() + 5 - rem;
+        if (this.minutes <= 60) {
+          this.minutes = 0;
+          this.hours = this.hours + 1;
+          if (this.hours <= 24) {
+            this.hours = 0;
+          }
+        }
       }
     }
 
@@ -116,6 +124,7 @@ export class CreateScheduleDialogComponent implements OnInit {
   }
 
   create() {
+    this.loading = true;
     if (!this.editMode) {
       let time = new Date();
       time.setHours(this.hours);
@@ -124,9 +133,11 @@ export class CreateScheduleDialogComponent implements OnInit {
       // let schedule = new ScheduledFeeding(null, `${ this.hours }:${ this.minutes }:0`, this.amountNo, true);
       this.scheduledFeedingService.create(schedule).subscribe({
         next: () => {
+          this.loading = false;
           this.dialogRef.close(true);
         },
         error: data => {
+          this.loading = false;
           if (data.error && typeof data.error === "string")
             console.log(data.error);
           else
@@ -140,9 +151,11 @@ export class CreateScheduleDialogComponent implements OnInit {
       let schedule = new ScheduledFeeding(this.data.id, time.toLocaleTimeString('en-GB'), this.amountNo, true);
       this.scheduledFeedingService.update(schedule).subscribe({
         next: () => {
+          this.loading = false;
           this.dialogRef.close(true);
         },
         error: data => {
+          this.loading = false;
           if (data.error && typeof data.error === "string")
             console.log(data.error);
           else

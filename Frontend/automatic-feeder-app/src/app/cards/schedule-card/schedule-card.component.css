@@ -76,6 +76,6 @@
     transition: all 0.2s ease-in;
 }
 
-.delete-button:hover {
+.delete-button:hover:not(:disabled) {
     color: black;
 }

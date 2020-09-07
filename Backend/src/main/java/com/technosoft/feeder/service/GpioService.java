@@ -1,5 +1,6 @@
 package com.technosoft.feeder.service;
 
+import com.pi4j.io.gpio.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
@@ -7,31 +8,19 @@ import javax.annotation.PreDestroy;
 @Service
 public class GpioService {
 
-//    private final GpioController gpio = GpioFactory.getInstance();
-//    private final GpioPinDigitalOutput pinA = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "PinA", PinState.LOW);
-//    private final GpioPinDigitalOutput pinB = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_17, "PinB");
-//    private final GpioPinDigitalOutput pinC = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27, "PinC");
-//    private final GpioPinDigitalOutput pinD = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_22, "PinD");
+    private final GpioController gpio = GpioFactory.getInstance();
+    private final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "PinA", PinState.HIGH);
+
+    public GpioService() {
+        pin.setShutdownOptions(false, PinState.HIGH);
+    }
 
     public boolean feed(int amount) throws InterruptedException {
-        System.out.println("rotate motor clockwise for 3 seconds");
-//        pinA.high();
-//        pinB.low();
-//        pinC.low();
-//        pinD.high();
-//        // wait 3 seconds
-//        Thread.sleep(3000);
-//        System.out.println("rotate motor in oposite derection for 6 seconds");
-//        pinA.low();
-//        pinB.high();
-//        pinC.high();
-//        pinD.low();
-//        // wait 6 seconds
-//        Thread.sleep(3000);
-//        // stop motor
-//        System.out.println("Stopping motor");
-//        pinB.low();
-//        pinC.low();
+        System.out.println("Rotating motor for " + amount + " seconds");
+        pin.low();
+        Thread.sleep(amount * 1000);
+        System.out.println("Stopping motor");
+        pin.high();
         return true;
     }
 
@@ -39,6 +28,6 @@ public class GpioService {
     public void destroy() {
         System.out.println(
                 "Callback triggered - @PreDestroy.");
-//        gpio.shutdown();
+        gpio.shutdown();
     }
 }

@@ -33,17 +33,22 @@ public class ScheduledFeedingService {
         DateTimeFormatter formatter
                 = DateTimeFormatter.ISO_TIME;
 
-        String timeString = LocalTime.now().minusMinutes(5).format(formatter);
-        String timeNowString = LocalTime.now().format(formatter);
+//        String timeString = LocalTime.now().minusMinutes(5).format(formatter);
+//        String timeNowString = LocalTime.now().format(formatter);
         List<ScheduledFeeding> scheduledFeedings = repository.findEnabledSortedByTime(LocalTime.now().minusMinutes(5), LocalTime.now());
         for (ScheduledFeeding scheduledFeeding : scheduledFeedings) {
-            if (!scheduledFeeding.getTime().isAfter(LocalTime.now()) && !scheduledFeeding.getTime().isBefore(LocalTime.now().minusMinutes(5))) {
-                try {
+//            if (!scheduledFeeding.getTime().isAfter(LocalTime.now()) && !scheduledFeeding.getTime().isBefore(LocalTime.now().minusMinutes(5))) {
+//                try {
+//                    gpioService.feed(scheduledFeeding.getAmount());
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+            try {
                     gpioService.feed(scheduledFeeding.getAmount());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
         }
     }
 
