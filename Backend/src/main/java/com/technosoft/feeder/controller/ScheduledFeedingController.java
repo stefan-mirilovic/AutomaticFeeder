@@ -28,16 +28,6 @@ public class ScheduledFeedingController {
         }
     }
 
-    @PostMapping(value = "/feed/{amount}")
-    public ResponseEntity<?> manualFeeding(@PathVariable int amount) {
-        try {
-            this.scheduledFeedingService.manualFeed(amount);
-            return new ResponseEntity<>(true, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
     @PostMapping
     public ResponseEntity<?> createScheduledFeeding(@RequestBody ScheduledFeedingDTO dto) {
         ScheduledFeedingDTO retVal = null;

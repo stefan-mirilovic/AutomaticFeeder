@@ -9,7 +9,7 @@ import javax.annotation.PreDestroy;
 public class GpioService {
 
     private final GpioController gpio = GpioFactory.getInstance();
-    private final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "PinA", PinState.HIGH);
+    private final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "PinA", PinState.HIGH);
 
     public GpioService() {
         pin.setShutdownOptions(false, PinState.HIGH);
@@ -27,7 +27,7 @@ public class GpioService {
     @PreDestroy
     public void destroy() {
         System.out.println(
-                "Callback triggered - @PreDestroy.");
+                "GPIO shutting down.");
         gpio.shutdown();
     }
 }

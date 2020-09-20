@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faFish, faPlus, faMinus, faCircle, faClock, faHome, faInfoCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
-import { ScheduledFeedingService } from 'src/app/service/scheduled-feeding.service';
+import { FeedingService } from 'src/app/service/feeding.service';
 
 @Component({
   selector: 'app-button-page',
@@ -20,7 +20,9 @@ export class ButtonPageComponent implements OnInit {
   amountNo = 4;
   loading = false;
 
-  constructor(private service: ScheduledFeedingService) { }
+  constructor(
+    private feedingService: FeedingService
+    ) { }
 
   ngOnInit() {
     this.adjustDots();
@@ -55,7 +57,7 @@ export class ButtonPageComponent implements OnInit {
 
   manualFeeding() {
     this.loading = true;
-    this.service.manualFeeding(this.amountNo).subscribe({
+    this.feedingService.manualFeeding(this.amountNo).subscribe({
       next: (result) => {
         this.loading = false;
       },

@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: ':8080',
   schedule: 'api/schedule',
+  feeding: 'api/feeding',
 };
 //http://localhost:8080 - old, cannot work with remote device
 /*

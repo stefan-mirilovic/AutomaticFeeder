@@ -1,7 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { faFish, faPlus, faMinus, faCircle, faClock, faEllipsisV, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faCircle as farCircle, faClock as farClock} from '@fortawesome/free-regular-svg-icons';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { faFish, faPlus, faMinus, faEllipsisV, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faClock as farClock} from '@fortawesome/free-regular-svg-icons';
 import { ScheduledFeeding } from 'src/app/model/scheduled-event';
 import { CreateScheduleDialogComponent } from 'src/app/dialogs/create-schedule-dialog/create-schedule-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,18 +27,10 @@ export class SchedulePageComponent implements OnInit {
 
   constructor(
     private scheduledFeedingService: ScheduledFeedingService,
-    private router: Router,
     private createDialog: MatDialog
     ) { }
 
   ngOnInit() {
-    // this.feedings.push(new ScheduledFeeding(0, new Date("2018-08-15 16:25:30.0"), 6, false));
-    // this.feedings.push(new ScheduledFeeding(1, new Date("2018-08-15 17:25:30.0"), 4, false));
-    // this.feedings.push(new ScheduledFeeding(2, new Date("2018-08-15 18:25:30.0"), 2, false));
-    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 19:25:30.0"), 7, false));
-    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 20:25:30.0"), 7, false));
-    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 21:25:30.0"), 1, false));
-    // this.feedings.push(new ScheduledFeeding(3, new Date("2018-08-15 22:25:30.0"), 8, false));
     this.getAll();
     setInterval(() => {
       if (this.nextTime != null) {
@@ -74,36 +65,7 @@ export class SchedulePageComponent implements OnInit {
         sortedArray.push(f);
       }
     }
-    // if (sortedArray.length == 0) {
-    //   this.nextTime = null;
-    //   return;
-    // }
-    // let now = new Date();
-    // let min : ScheduledFeeding = sortedArray[0];
-    // let minHours = +min.time.split(':')[0];
-    // let minMinutes = +min.time.split(':')[1];
-    // for (let i = 1; i < sortedArray.length; i++) {
-    //   let hours = +sortedArray[i].time.split(':')[0];
-    //   let minutes = +sortedArray[i].time.split(':')[1];
-    //   if (hours - now.getHours() == minHours - now.getHours()) {
-    //     if (minutes - now.getMinutes() < minMinutes - now.getMinutes()) {
-    //       minHours = hours;
-    //       minMinutes = minutes;
-    //       min = sortedArray[i];
-    //     } else {
-    //       continue;
-    //     }
-    //   } else if (hours - now.getHours() < minHours - now.getHours()) {
-    //     minHours = hours;
-    //     minMinutes = minutes;
-    //     min = sortedArray[i];
-    //   } else {
-    //     continue;
-    //   }
-    // }
-    // this.nextTime = new Date();
-    // this.nextTime.setHours(+min.time.split(':')[0], +min.time.split(':')[1], 0, 0);
-    // this.calculateTimeUntil();
+
     sortedArray.sort((n1,n2)=> this.compareTimeToNow(n1, n2));
     for (let item of sortedArray) {
       if (item.enabled) {
@@ -119,17 +81,8 @@ export class SchedulePageComponent implements OnInit {
 
   compareTimeToNow(n1: ScheduledFeeding, n2: ScheduledFeeding) {
     let now = new Date();
-    // console.log(now.getTime());
-    // console.log(n1Time.getTime());
-    // console.log(n2Time.getTime());
     let n1Time = new Date();
     let n2Time = new Date();
-    // n1Time.setFullYear(now.getFullYear());
-    // n1Time.setMonth(now.getMonth());
-    // n1Time.setDate(now.getDate());
-    // n2Time.setFullYear(now.getFullYear());
-    // n2Time.setMonth(now.getMonth());
-    // n2Time.setDate(now.getDate());
     n1Time.setHours(+n1.time.split(':')[0], +n1.time.split(':')[1], 0, 0)
     n2Time.setHours(+n2.time.split(':')[0], +n2.time.split(':')[1], 0, 0)
 
@@ -155,13 +108,7 @@ export class SchedulePageComponent implements OnInit {
     } else {
       this.trash = faTrashAlt;
     }
-    // this.deleteMode ? this.trash = faTrashAlt : this.trash = faTimes
   }
-
-  // @HostListener('window:scroll', ['$event'])
-  // checkScroll() {
-  //   this.isSticky = window.pageYOffset >= 250;
-  // }
 
   openCreateDialog() {
     const dialogRef = this.createDialog.open(CreateScheduleDialogComponent, {

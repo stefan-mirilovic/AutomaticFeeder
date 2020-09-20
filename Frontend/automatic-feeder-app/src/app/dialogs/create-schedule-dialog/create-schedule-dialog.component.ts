@@ -97,7 +97,7 @@ export class CreateScheduleDialogComponent implements OnInit {
 
   decHours() {
     if (this.hours <= 0) {
-      this.hours = 26;
+      this.hours = 23;
     } else {
       this.hours = this.hours - 1;
     }
